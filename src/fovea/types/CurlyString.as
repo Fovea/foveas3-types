@@ -13,6 +13,10 @@ package fovea.types {
             }
         }
 
+        public static function of(args:Array):CurlyString {
+            return new CurlyString(args);
+        }
+
         public function toString():String {
             var s:String = _args[0];
             for (var i:int = 1; i < _args.length; ++i)
