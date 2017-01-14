@@ -4,10 +4,11 @@ package fovea.types {
 
     public class Model {
 
-        public static function create():Object {
+        public static function create(o:Object = null):Object {
 
             var e:EventDispatcher = new EventDispatcher();
-            var o:Object = {};
+            if (!o)
+                o = {};
 
             o.addEventListener = e.addEventListener;
             o.setPropertyIsEnumerable("addEventListener", false);
