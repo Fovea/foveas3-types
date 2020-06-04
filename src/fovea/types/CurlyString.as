@@ -1,10 +1,17 @@
 package fovea.types {
 
+    // A parametrized string
+    //
+    // Example:
+    //
+    //   CurlyString.of(["Hello {1} {2}", "John", "Doe"]).toString()
+    //   -> "Hello John Doe"
+    //
     public class CurlyString {
 
         private var _args:Array;
         public function key():String { return _args[0]; }
-        public function args():Array { return _args; }
+        public function args():Array { return _args.slice(1); }
 
         public function CurlyString(args:Array) {
             _args = args;
@@ -15,6 +22,10 @@ package fovea.types {
 
         public static function of(args:Array):CurlyString {
             return new CurlyString(args);
+        }
+
+        public static function ofKeyArgs(key:String, args:Array):CurlyString {
+            return new CurlyString([key].concat(args));
         }
 
         public function toString():String {
